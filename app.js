@@ -1,92 +1,95 @@
-// Grab input off
-const fileUpload = document.querySelector('#fileUpload');
-const fileContent = document.querySelector('#myText');
-fileContent.style.display = 'none';
-const wordCount = document.getElementById('myCount');
-const searchField = document.querySelector('#wordSearch')
-const searchedWord = document.getElementById('myWord');
-let textCount = 0;
+/**
+ * Copywrite Taylor Brauer | 2021
+ */
 
-// Set the current year for the footer
+// Search
+const searchField = document.getElementById('searchField');
+const searchedWord = document.getElementById('searchedWord');
+// File
+const fileField = document.getElementById('fileField');
+const fileContent = document.getElementById('fileContent');
+fileContent.style.display = 'none';
+// Count
+const numWords = document.getElementById('numWords');
+let wordCount = 0;
+// Copywrite Year
 const date = new Date().getFullYear();
 document.getElementById('currentYear').innerHTML = date;
-
-// Grab Modals off the DOM.
-const modal = document.getElementById('myModal');
-const btn = document.getElementById('myBtn');
-const btn2 = document.getElementById('myBtn2');
-const span = document.getElementsByClassName('close')[0];
+// Modal
+const contactMeModal = document.getElementById('contactMeModal');
+const navContactBtn = document.getElementById('navContactBtn');
+const closeModalBtn = document.getElementsByClassName('close')[0];
 
 /**
- * Click to open the modal.
+ * Sets the searched word.
  */
-btn.onclick = () => {
-    modal.classList.add('show');
+const setSearchedWord = (event) => {
+    searchedWord.innerHTML = event.target.value;
 }
 
 /**
- * Click to open the modal.
+ * Handles the parsing of a file and counting the number of occurences for a searched word.
  */
-btn2.onclick = () => {
-    modal.classList.add('show');
+const parseFileContents = (event) => {
+    // Re-initialize values
+    wordCount = 0;
+    fileContent.value = '';
+    for (const file of event.target.files) {
+        console.log(file);
+        // Get the contents of the file
+        const fileReader = new FileReader();
+        // Read the contents of the file
+        fileReader.readAsText(file);
+        // Operate on the contents of the file.
+        fileReader.onload = () => {
+            fileContent.innerHTML = fileReader.result;
+            // Separate words in the file
+            const wordBank = fileContent.innerHTML.split(/[\s.]+/);
+            wordBank.forEach(word => {
+                if (word.toLowerCase() === searchedWord.innerHTML.toLowerCase() &&
+                    word.toLowerCase() !== '') {
+                    wordCount++;
+                }
+            });
+            // Assign the total word count.
+            numWords.innerHTML = wordCount;
+            // Display file contents if file has words
+            fileContent.style.display = 'flex';
+        }
+    }
 }
 
 /**
- * Click the 'x' button on the modal.
+ * ###### Event Listeners #########
  */
-span.onclick = () => {
-    modal.classList.remove('show');
+searchField.addEventListener('change', setSearchedWord);
+fileField.addEventListener('change', parseFileContents);
+
+/**
+ * ##### Modal #######
+ */
+
+/**
+ * Open the modal
+ */
+navContactBtn.onclick = () => {
+    contactMeModal.classList.add('show');
 }
 
 /**
- * Click anywhere outside the modal.
+ * Close modal when clicking the 'x' in the top right.
+ */
+closeModalBtn.onclick = () => {
+    contactMeModal.classList.remove('show');
+}
+
+/**
+ * Close modal when clicking outside the modal.
  * 
  * @param {*} event 
  */
 window.onclick = (event) => {
-    if (event.target === modal) {
-        modal.classList.remove('show');
+    if (event.target === contactMeModal) {
+        contactMeModal.classList.remove('show');
     }
 }
-
-/**
- * Handles reading the contents of the file that has been uploaded.
- */
-const readFileContents = () => {
-    textCount = 0;
-    fileContent.value = '';
-    for (const file of fileUpload.files) {
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-            fileContent.innerHTML = fileReader.result.toString();
-            const wordBank = fileContent.innerHTML.split(/[\s.]+/);
-            wordBank.forEach((word) => {
-                // Leave trim as a mistake.
-                // Demo how to update the deployed app after initial deployment.
-                if (word.toLowerCase().trim() === searchField.value.toLowerCase().trim()) {
-                    textCount++;
-                }
-            });
-            wordCount.innerHTML = textCount.toString();
-        }
-        // Close up the file
-        fileReader.readAsText(file);
-        // Render the results
-        fileContent.style.display = 'flex';
-    }
-}
-
-/**
- * Handles setting the searched keyword.
- */
-const setSearchedWord = () => {
-    searchedWord.innerHTML = searchField.value;
-}
-
-/**
- * Event listeners.
- * 
- * Note: The methods being called need to be declared first.
- */
-fileUpload.addEventListener('change', readFileContents);
-searchField.addEventListener('change', setSearchedWord);

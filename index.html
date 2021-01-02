@@ -1,82 +1,74 @@
-<html>
+<!-- Copywrite Taylor Brauer | 2021 -->
+
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Merriweather|Lato">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <title>JavaScript File Parser</title>
 </head>
 <body>
-
-<div class="container">
-    <nav>
-        <div class="brandName">
-            <img src="./assets/logo-javascript-logo-png-transparent.png" class="siteLogo" alt="JavaScript Logo">
-            <h3> JavaScript File Parser</h3>
+    <section class="container">
+        <nav>
+            <div class="brandName">
+                <img src="./assets/javascript-js.svg" alt="appLogo">
+                <h3>JavaScript File Parser</h3>
+            </div>
+            <div class="linkMenu">
+                <ul>
+                    <li id="navContactBtn">Contact</li>
+                </ul>
+            </div>
+        </nav>
+        <section class="content">
+            <div class="search">
+                <input type="text" id="searchField" placeholder="Enter a word">
+            </div>
+            <div class="file">
+                <label id=fileLabel>
+                    <input type="file" id="fileField">
+                    Upload File
+                </label>
+            </div>
+            <div class="counter">
+                <h2>The searched word, '<span id="searchedWord"></span>', appeared <span id="numWords"></span> times.</h2>
+            </div>
+            <div class="results">
+                <div class="resultsLayout">
+                    <label>File Contents:</label>
+                    <div class="fileContents">
+                        <span id="fileContent"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <footer>
+        <div class="footerContent">
+            <p>&copy; Taylor Brauer | <span id="currentYear"></span></p>
         </div>
-        <ul>
-            <li id="myBtn">Contact</li>
-        </ul>
-    </nav>
-
-    <section class="content">
-        <div class="search">
-            <input type="text"
-            id="wordSearch"
-            name="wordSearch"
-            placeholder="Enter a word">
-        </div>
-        <div class='upload'>
-            <label id="fileUploadLabel">
-                <input type="file" id="fileUpload" accept=".txt"/>
-                Upload a .txt file
-            </label>
-        </div>
-        <div class='count'>
-            <h1>Number of times '<span id="myWord"></span>' appears: <span id="myCount"></span></h3>
-        </div>
-        <div class='file'>
-            <div class="fileDisplay">
-                <h2>File Contents:</h5>
-                <div id="myText"></div>
+    </footer>
+    <!-- ####### The Modal ########## -->
+    <div id="contactMeModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Contact Me</h2>
+            </div>
+            <div class="modal-body">
+                <h4><a href="https://www.taylorcbrauer.com" target="_blank">My Website</a></h4>
+                <h4><a href="https://instagram.com/taylorcbrauer" target="_blank">My Instagram</a></h4>
+                <h4><a href="https://twitter.com/taylorcbrauer" target="_blank">My Twitter</a></h4>
+            </div>
+            <div class="modal-footer">
+                <h3></h3>
             </div>
         </div>
-    </section>
-</div>
-
-<section class="footer">
-    <div class="footer-content">
-        <p>&copy; Taylor Brauer | <span id="currentYear"></span></p>
-        <ul>
-            <li id="myBtn2">Contact</li>
-        </ul>
     </div>
-</section>
-
-<!-- ####### The Modal ########## -->
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Contact Information</h2>
-        </div>
-        <div class="modal-body">
-            <h4>Website: <a href="https://www.taylorcbrauer.com" target="_blank">My Personal Site</a></h4>
-            <h4>Instagram: <a href="https://instagram.com/taylorcbrauer" target="_blank">@taylorcbrauer</a></h4>
-            <h4>Twitter: <a href="https://twitter.com/taylorcbrauer" target="_blank">@taylorcbrauer</a></h4>
-        </div>
-        <div class="modal-footer">
-            <h3></h3>
-        </div>
-    </div>
-</div>
-<!-- ####### /The Modal ########## -->
-
-<script src="app.js"></script>
-
+    <!-- ####### /The Modal ########## -->
 </body>
+<script src="app.js"></script>
 </html>

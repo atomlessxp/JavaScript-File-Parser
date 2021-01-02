@@ -1,11 +1,12 @@
+/* Copywrite Taylor Brauer | 2021 */
+
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html {
-    height: 100vh;
     background: linear-gradient(
             to right bottom,
             rgb(34, 141, 234),
@@ -14,71 +15,50 @@ html {
 }
 
 body {
-    display: flex;
-    min-height: 96vh;
-    flex-direction: column;
-    font-family: 'Merriweather', serif;
+    min-height: 100vh;
+    font-family: 'Merriweather';
     font-size: 16px;
     font-weight: 300;
-    margin: 30px;
-    border-radius: .3rem;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
     background: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 1.8rem; /* 28.8px */
+    border-radius: .3rem;
 }
 
 nav {
-    width: 90vw;
-    padding-top: 1rem;
-    margin: 0 auto; /* horizontally center within it's container. */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    padding: 1.5rem;
+}
+
+nav .brandName {
+    display: flex;
+    align-items: center;
+}
+
+nav img {
+    height: 30px;
+    width: 30px;
+    margin-right: 1rem;
 }
 
 nav ul {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav li {
+    margin-right: 2rem;
     list-style: none;
-    margin: 0 1rem;
 }
 
-.siteLogo {
-    height: 30px;
-    width: 30px;
-}
-
-.brandName {
-    display: flex;
-    align-items: center;
-}
-
-.brandName img {
-    margin-right: 1rem;
-}
-
-#myBtn {
+nav #navContactBtn {
     cursor: pointer;
     padding: .7rem;
 }
 
-#myBtn:hover {
+nav #navContactBtn:hover {
     background: #e2e2e2;
-    border-radius: .3rem;
-}
-
-#myBtn2 {
-    cursor: pointer;
-    padding: .7rem;
-}
-
-#myBtn2:hover {
-    background: white;
-    color: black;
     border-radius: .3rem;
 }
 
@@ -87,13 +67,17 @@ nav li {
 }
 
 .content {
-    width: 90vw;
-    margin: 13rem auto;
-    padding-bottom: 8rem; /* Keeps the footer at the bottom of the page.*/
+    margin-top: 10rem;
 }
 
-#wordSearch {
-    width: 100%;
+.content .search {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+#searchField {
+    width: 30%;
     border: none;
     background: #e2e2e2;
     height: 3.5rem;
@@ -104,24 +88,17 @@ nav li {
     font-family: 'Lato';
 }
 
+.content .file {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
 input[type='file'] {
     display: none;
 }
 
-.search {
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-    width: 30%;
-}
-
-.upload {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 4rem;
-}
-
-#fileUploadLabel {
+#fileLabel {
     display: inline-block;
     padding: .7rem 0;
     cursor: pointer;
@@ -138,72 +115,51 @@ input[type='file'] {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.count {
+.content .counter {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
     font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 4rem;
 }
 
-.file {
+.content .results {
     display: flex;
     justify-content: center;
-    margin-bottom: 4rem;
+    margin: 7rem;
 }
 
-.fileDisplay {
+.resultsLayout {
     display: flex;
     flex-direction: column;
 }
 
-.file #myText {
-    background: black;
-    color: lime;
-    font-family: 'Lato';
-    opacity: .9;
-    line-height: 1.7;
-    border-radius: .3rem;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.resultsLayout label {
+    font-size: 2rem;
+    font-weight: 400;
 }
 
-.footer {
-    position: relative; /* Footer's style work within the bounds of the body. */
-    background: #b1b1b1;
-    padding: 2rem 0;
-    height: 12vh;
+.content #fileContent {
+    background: rgba(8, 8, 8, 0.8);
+    color: lime;
+    padding: 3rem 2rem;
+}
+
+footer {
+    background: #e2e2e2;
+    min-height: 5vh;
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+}
+
+footer .footerContent {
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom-left-radius: .3rem;
-    border-bottom-right-radius: .3rem;
-    opacity: .5;
+    margin: 3rem;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5rem;
-    width: 40%;
-}
-
-.footer-content {
-    color: white;
-}
-
-.footer-content ul {
-    display: flex;
-    list-style: none;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-content ul li {
-    margin: 0 .3rem;
-}
-
-/* MODAL SETTINGS */
+/* ##### MODAL ###### */
 .modal {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -222,7 +178,6 @@ input[type='file'] {
     opacity: 1;
 }
 
-/* Modal Content */
 .modal-content {
     position: relative;
     background-color: #fefefe;
@@ -234,7 +189,6 @@ input[type='file'] {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* The Close Button */
 .close {
     color: black;
     float: right;
