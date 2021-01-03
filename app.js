@@ -1,7 +1,3 @@
-/**
- * Copywrite Taylor Brauer | 2021
- */
-
 // Search
 const searchField = document.getElementById('searchField');
 const searchedWord = document.getElementById('searchedWord');
