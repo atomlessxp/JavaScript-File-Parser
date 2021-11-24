@@ -30,6 +30,7 @@ const parseFileContents = (event) => {
     // Re-initialize values
     wordCount = 0;
     fileContent.value = '';
+    console.log('Here is my new feature!');
     for (const file of event.target.files) {
         console.log(file);
         // Get the contents of the file
